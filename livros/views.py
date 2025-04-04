@@ -1,18 +1,18 @@
 from django.shortcuts import render
-from .models import Livros
+from .models import Livro
 from . serializers import LivrosSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
 def listar_livros(request):
-    livros = Livros.objects.all()
+    livros = Livro.objects.all()
     return render(request, 'livros/livros.html', {'livros': livros})
 
 @api_view(['GET', 'POST'])
 def listar_adicionar_livros(request):
     if request.method == 'GET':
-        livros = Livros.objects.all()
+        livros = Livro.objects.all()
         serializer = LivrosSerializer(livros, many=True)
         return Response(serializer.data)
     
