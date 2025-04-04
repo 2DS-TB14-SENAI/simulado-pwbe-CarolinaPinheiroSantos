@@ -7,3 +7,7 @@ class Livros(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+class Livro(models.Model):
+    class Meta:
+        db_table = 'livros_livro'
